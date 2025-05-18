@@ -187,7 +187,7 @@ export default function BannerSlider() {
         <Button
           variant="outline"
           size="icon"
-          className="h-10 w-10 rounded-full border-white/30 bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50 hover:text-white"
+          className="h-9 w-9 rounded-full border-white/30 bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-black/70 hover:text-white"
           onClick={goToPrevious}
           data-no-scroll="true"
         >
@@ -197,7 +197,7 @@ export default function BannerSlider() {
         <Button
           variant="outline"
           size="icon"
-          className="h-10 w-10 rounded-full border-white/30 bg-black/30 text-white backdrop-blur-sm transition-colors hover:bg-black/50 hover:text-white"
+          className="h-9 w-9 rounded-full border-white/30 bg-black/50 text-white backdrop-blur-sm transition-colors hover:bg-black/70 hover:text-white"
           onClick={goToNext}
           data-no-scroll="true"
         >
@@ -213,7 +213,7 @@ export default function BannerSlider() {
             key={index}
             className={cn(
               "h-2 w-2 rounded-full transition-all",
-              index === currentIndex ? "w-8 bg-primary" : "bg-white/50",
+              index === currentIndex ? "w-8 bg-white" : "bg-white/50",
             )}
             onClick={() => goToSlide(index)}
             data-no-scroll="true"

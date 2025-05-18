@@ -149,20 +149,36 @@ export default function RoomVisualizer() {
           <div className="border-t bg-background p-4">
             <Tabs defaultValue="colors" onValueChange={setActiveTab}>
               <TabsList className="grid w-full grid-cols-4">
-                <TabsTrigger value="colors" className="flex items-center gap-2" data-no-scroll="true">
-                  <PaintBucket className="h-4 w-4" />
+                <TabsTrigger
+                  value="colors"
+                  className="flex items-center justify-center gap-1 px-1 py-1.5 text-xs md:gap-2 md:px-3 md:py-2 md:text-sm"
+                  data-no-scroll="true"
+                >
+                  <PaintBucket className="h-3 w-3 md:h-4 md:w-4" />
                   <span className="hidden sm:inline">Colors</span>
                 </TabsTrigger>
-                <TabsTrigger value="furniture" className="flex items-center gap-2" data-no-scroll="true">
-                  <Sofa className="h-4 w-4" />
+                <TabsTrigger
+                  value="furniture"
+                  className="flex items-center justify-center gap-1 px-1 py-1.5 text-xs md:gap-2 md:px-3 md:py-2 md:text-sm"
+                  data-no-scroll="true"
+                >
+                  <Sofa className="h-3 w-3 md:h-4 md:w-4" />
                   <span className="hidden sm:inline">Furniture</span>
                 </TabsTrigger>
-                <TabsTrigger value="lighting" className="flex items-center gap-2" data-no-scroll="true">
-                  <Lamp className="h-4 w-4" />
+                <TabsTrigger
+                  value="lighting"
+                  className="flex items-center justify-center gap-1 px-1 py-1.5 text-xs md:gap-2 md:px-3 md:py-2 md:text-sm"
+                  data-no-scroll="true"
+                >
+                  <Lamp className="h-3 w-3 md:h-4 md:w-4" />
                   <span className="hidden sm:inline">Lighting</span>
                 </TabsTrigger>
-                <TabsTrigger value="accessories" className="flex items-center gap-2" data-no-scroll="true">
-                  <Table className="h-4 w-4" />
+                <TabsTrigger
+                  value="accessories"
+                  className="flex items-center justify-center gap-1 px-1 py-1.5 text-xs md:gap-2 md:px-3 md:py-2 md:text-sm"
+                  data-no-scroll="true"
+                >
+                  <Table className="h-3 w-3 md:h-4 md:w-4" />
                   <span className="hidden sm:inline">Accessories</span>
                 </TabsTrigger>
               </TabsList>

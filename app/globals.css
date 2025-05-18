@@ -169,9 +169,12 @@ html {
 
 /* Mobile optimizations */
 @media (max-width: 640px) {
-  .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+  button,
+  .button,
+  [role="button"],
+  a {
+    min-height: 44px;
+    min-width: 44px;
   }
 }
 
@@ -184,4 +187,61 @@ html {
     min-height: 44px;
     min-width: 44px;
   }
+}
+
+/* Better touch targets for mobile */
+@media (max-width: 640px) {
+  button,
+  .button,
+  [role="button"],
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Improve form elements on mobile */
+  input,
+  select,
+  textarea {
+    font-size: 16px !important; /* Prevents iOS zoom on focus */
+  }
+
+  /* Improve spacing on mobile */
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Reduce text size on mobile */
+  h1 {
+    font-size: 1.875rem !important;
+  }
+
+  h2 {
+    font-size: 1.5rem !important;
+  }
+
+  h3 {
+    font-size: 1.25rem !important;
+  }
+
+  /* Improve mobile scrolling */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Fix for iOS Safari 100vh issue */
+.min-h-screen {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: -webkit-fill-available;
+}
+
+/* Improve tap highlight color */
+* {
+  -webkit-tap-highlight-color: transparent;
 }

@@ -289,7 +289,7 @@ export default function Portfolio() {
             {/* Add DialogTitle for accessibility */}
             <DialogTitle className="sr-only">{selectedProject?.title || "Project Details"}</DialogTitle>
             <DialogClose
-              className="absolute right-4 top-4 z-10 rounded-full bg-background/80 p-2 text-foreground backdrop-blur-sm transition-colors hover:bg-background"
+              className="absolute right-4 top-4 z-10 rounded-full bg-gray-800/70 p-2 text-white backdrop-blur-sm transition-colors hover:bg-gray-800/90"
               data-no-scroll="true"
             >
               <X className="h-4 w-4" />

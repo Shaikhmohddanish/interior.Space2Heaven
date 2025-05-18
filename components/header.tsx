@@ -49,6 +49,22 @@ export default function Header() {
     }),
   }
 
+  // Add this right after the useMediaQuery hook
+  useEffect(() => {
+    const handleCloseSheet = () => {
+      // Find and click the close button
+      const closeButton = document.querySelector("[data-radix-collection-item]")
+      if (closeButton && closeButton instanceof HTMLElement) {
+        closeButton.click()
+      }
+    }
+
+    document.addEventListener("close-sheet", handleCloseSheet)
+    return () => {
+      document.removeEventListener("close-sheet", handleCloseSheet)
+    }
+  }, [])
+
   return (
     <>
       <div className="hidden border-b bg-background py-2 lg:block">
@@ -185,12 +201,26 @@ export default function Header() {
                       className={`text-lg font-medium transition-colors hover:text-primary ${
                         pathname === item.href ? "text-primary" : "text-muted-foreground"
                       }`}
+                      onClick={() => {
+                        // Close the sheet when a navigation item is clicked
+                        const closeEvent = new CustomEvent("close-sheet")
+                        document.dispatchEvent(closeEvent)
+                      }}
                     >
                       {item.name}
                     </Link>
                   ))}
                   <Button asChild className="mt-4 w-full">
-                    <Link href="/contact">Book Consult</Link>
+                    <Link
+                      href="/contact"
+                      onClick={() => {
+                        // Close the sheet when the button is clicked
+                        const closeEvent = new CustomEvent("close-sheet")
+                        document.dispatchEvent(closeEvent)
+                      }}
+                    >
+                      Book Consult
+                    </Link>
                   </Button>
                   <div className="mt-4 flex items-center justify-between">
                     <div className="flex gap-4">

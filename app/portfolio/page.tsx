@@ -2,14 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogClose,
-} from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle, DialogClose } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, X } from "lucide-react"
@@ -247,83 +240,78 @@ export default function PortfolioPage() {
         >
           {selectedProject && (
             <DialogContent className="max-w-5xl border-none bg-background/95 p-0 backdrop-blur-sm sm:rounded-lg">
-              <DialogHeader className="p-6">
-                <DialogTitle className="text-2xl">{selectedProject.title}</DialogTitle>
-                <DialogDescription>
-                  {selectedProject.category} | {selectedProject.location} | {selectedProject.year}
-                </DialogDescription>
-              </DialogHeader>
-
-              <div className="relative">
-                <div className="relative aspect-video overflow-hidden bg-muted/30">
-                  <Image
-                    src={selectedProject.images[currentImageIndex] || "/placeholder.svg"}
-                    alt={selectedProject.title}
-                    width={1200}
-                    height={800}
-                    className="h-full w-full object-cover"
-                    priority
-                  />
-
-                  {selectedProject.images.length > 1 && (
-                    <>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="absolute left-4 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-background/80 text-foreground backdrop-blur-sm transition-colors hover:bg-background"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          prevImage()
-                        }}
-                      >
-                        <ChevronLeft className="h-5 w-5" />
-                        <span className="sr-only">Previous image</span>
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="icon"
-                        className="absolute right-4 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-background/80 text-foreground backdrop-blur-sm transition-colors hover:bg-background"
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          nextImage()
-                        }}
-                      >
-                        <ChevronRight className="h-5 w-5" />
-                        <span className="sr-only">Next image</span>
-                      </Button>
-                    </>
-                  )}
-                </div>
-
-                <div className="flex gap-2 overflow-x-auto p-4">
-                  {selectedProject.images.map((image, i) => (
-                    <div
-                      key={i}
-                      className={cn(
-                        "relative h-16 w-24 flex-shrink-0 cursor-pointer overflow-hidden rounded-md border-2 transition-all",
-                        i === currentImageIndex ? "border-primary" : "border-transparent",
-                      )}
-                      onClick={() => setCurrentImageIndex(i)}
-                    >
-                      <Image
-                        src={image || "/placeholder.svg"}
-                        alt={`${selectedProject.title} thumbnail ${i + 1}`}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="p-6">
-                <p className="text-muted-foreground">{selectedProject.description}</p>
-              </div>
-
-              <DialogClose className="absolute right-4 top-4 rounded-full bg-background/80 p-2 text-foreground backdrop-blur-sm transition-colors hover:bg-background">
+              <DialogTitle className="sr-only">{selectedProject?.title || "Project Details"}</DialogTitle>
+              <DialogClose className="absolute right-4 top-4 z-10 rounded-full bg-gray-800/70 p-2 text-white backdrop-blur-sm transition-colors hover:bg-gray-800/90">
                 <X className="h-4 w-4" />
                 <span className="sr-only">Close</span>
               </DialogClose>
+              {selectedProject && (
+                <div className="relative">
+                  <div className="relative aspect-video overflow-hidden bg-muted/30">
+                    <Image
+                      src={selectedProject.images[currentImageIndex] || "/placeholder.svg"}
+                      alt={selectedProject.title}
+                      width={1200}
+                      height={800}
+                      className="h-full w-full object-cover"
+                      priority
+                    />
+
+                    {selectedProject.images.length > 1 && (
+                      <>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="absolute left-4 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-background/80 text-foreground backdrop-blur-sm transition-colors hover:bg-background"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            prevImage()
+                          }}
+                        >
+                          <ChevronLeft className="h-5 w-5" />
+                          <span className="sr-only">Previous image</span>
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="icon"
+                          className="absolute right-4 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-background/80 text-foreground backdrop-blur-sm transition-colors hover:bg-background"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            nextImage()
+                          }}
+                        >
+                          <ChevronRight className="h-5 w-5" />
+                          <span className="sr-only">Next image</span>
+                        </Button>
+                      </>
+                    )}
+                  </div>
+
+                  <div className="flex gap-2 overflow-x-auto p-4">
+                    {selectedProject.images.map((image, i) => (
+                      <div
+                        key={i}
+                        className={cn(
+                          "relative h-16 w-24 flex-shrink-0 cursor-pointer overflow-hidden rounded-md border-2 transition-all",
+                          i === currentImageIndex ? "border-primary" : "border-transparent",
+                        )}
+                        onClick={() => setCurrentImageIndex(i)}
+                      >
+                        <Image
+                          src={image || "/placeholder.svg"}
+                          alt={`${selectedProject.title} thumbnail ${i + 1}`}
+                          fill
+                          className="object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="p-6">
+                    <p className="text-muted-foreground">{selectedProject.description}</p>
+                  </div>
+                </div>
+              )}
             </DialogContent>
           )}
         </Dialog>

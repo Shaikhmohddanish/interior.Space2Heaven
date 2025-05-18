@@ -80,20 +80,39 @@ export default function Process() {
           viewport={{ once: true }}
           className="relative"
         >
+          {/* Timeline line - hidden on mobile, visible on desktop */}
           <div className="absolute left-[calc(50%-1px)] top-0 hidden h-full w-0.5 bg-border md:block" />
+
           <div className="space-y-12 md:space-y-0">
             {steps.map((step, index) => (
-              <motion.div key={index} variants={itemVariants} className="relative md:grid md:grid-cols-2 md:gap-8">
-                <div className={`pb-10 md:pb-0 ${index % 2 === 0 ? "md:text-right" : "md:order-2"}`}>
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className={`relative ${isMobile ? "mb-12 pl-16" : "md:grid md:grid-cols-2 md:gap-8"}`}
+              >
+                {/* Mobile step number */}
+                <motion.div
+                  className={`absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground md:hidden`}
+                  initial={{ scale: 0.8, opacity: 0 }}
+                  whileInView={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
+                  viewport={{ once: true }}
+                >
+                  <span className="text-sm font-bold">{step.number}</span>
+                </motion.div>
+
+                {/* Content */}
+                <div className={`${isMobile ? "" : index % 2 === 0 ? "md:text-right" : "md:order-2"}`}>
                   <div className="space-y-2">
-                    <span className="text-sm font-medium text-primary">{step.number}</span>
+                    <span className="hidden text-sm font-medium text-primary md:inline-block">{step.number}</span>
                     <h3 className="text-xl font-bold">{step.title}</h3>
                     <p className="text-muted-foreground">{step.description}</p>
                   </div>
                 </div>
 
+                {/* Desktop step indicator */}
                 <motion.div
-                  className={`absolute left-0 top-0 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground md:relative ${
+                  className={`absolute left-0 top-0 hidden h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground md:flex ${
                     index % 2 === 0 ? "md:order-2 md:justify-self-start" : "md:justify-self-end"
                   }`}
                   initial={{ scale: 0.8, opacity: 0 }}
@@ -101,7 +120,6 @@ export default function Process() {
                   transition={{ duration: 0.5, delay: 0.2 }}
                   viewport={{ once: true }}
                 >
-                  <span className="sr-only">Step {Number.parseInt(step.number)}</span>
                   <ArrowRight className="h-5 w-5" />
                 </motion.div>
               </motion.div>

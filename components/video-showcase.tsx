@@ -192,11 +192,11 @@ export default function VideoShowcase() {
             {/* Video controls */}
             <div
               className={cn(
-                "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 transition-opacity duration-300",
+                "absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 transition-opacity duration-300",
                 isControlsVisible || !isPlaying ? "opacity-100" : "opacity-0",
               )}
             >
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
                 <Slider
                   value={[progress]}
                   min={0}
@@ -206,7 +206,7 @@ export default function VideoShowcase() {
                   className="cursor-pointer"
                 />
                 <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1">
                     <Button
                       variant="ghost"
                       size="icon"

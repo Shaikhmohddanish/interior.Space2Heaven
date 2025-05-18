@@ -91,7 +91,7 @@ export default function CostCalculator() {
                 {spaceTypes.map((space) => (
                   <div key={space.id} className="flex items-center space-x-2">
                     <RadioGroupItem value={space.id} id={`space-${space.id}`} data-no-scroll="true" />
-                    <Label htmlFor={`space-${space.id}`} className={isMobile ? "text-sm" : ""}>
+                    <Label htmlFor={`space-${space.id}`} className="text-xs sm:text-sm">
                       {space.name}
                     </Label>
                   </div>
@@ -167,7 +167,7 @@ export default function CostCalculator() {
                     onCheckedChange={(checked) => setIncludeFurniture(!!checked)}
                     data-no-scroll="true"
                   />
-                  <Label htmlFor="furniture" className={isMobile ? "text-sm" : ""}>
+                  <Label htmlFor="furniture" className="text-xs sm:text-sm">
                     Furniture Selection & Procurement
                   </Label>
                 </div>
@@ -178,7 +178,7 @@ export default function CostCalculator() {
                     onCheckedChange={(checked) => setIncludeAccessories(!!checked)}
                     data-no-scroll="true"
                   />
-                  <Label htmlFor="accessories" className={isMobile ? "text-sm" : ""}>
+                  <Label htmlFor="accessories" className="text-xs sm:text-sm">
                     Accessories & Decor
                   </Label>
                 </div>
@@ -189,7 +189,7 @@ export default function CostCalculator() {
                     onCheckedChange={(checked) => setIncludePainting(!!checked)}
                     data-no-scroll="true"
                   />
-                  <Label htmlFor="painting" className={isMobile ? "text-sm" : ""}>
+                  <Label htmlFor="painting" className="text-xs sm:text-sm">
                     Painting & Wallpaper
                   </Label>
                 </div>

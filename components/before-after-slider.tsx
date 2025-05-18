@@ -93,11 +93,12 @@ export default function BeforeAfterSlider() {
         </motion.div>
 
         <div className="relative">
-          <div className="absolute left-4 right-4 top-1/2 z-10 flex -translate-y-1/2 justify-between">
+          {/* Navigation Arrows - Hide on mobile */}
+          <div className="absolute left-4 right-4 top-1/2 z-10 hidden -translate-y-1/2 justify-between md:flex">
             <Button
               variant="outline"
               size="icon"
-              className="h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm"
+              className="h-10 w-10 rounded-full bg-background/80 text-foreground backdrop-blur-sm transition-colors hover:bg-background"
               onClick={prevProject}
               data-no-scroll="true"
             >
@@ -106,7 +107,7 @@ export default function BeforeAfterSlider() {
             <Button
               variant="outline"
               size="icon"
-              className="h-10 w-10 rounded-full bg-background/80 backdrop-blur-sm"
+              className="h-10 w-10 rounded-full bg-background/80 text-foreground backdrop-blur-sm transition-colors hover:bg-background"
               onClick={nextProject}
               data-no-scroll="true"
             >
