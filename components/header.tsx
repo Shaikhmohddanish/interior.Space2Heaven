@@ -49,21 +49,8 @@ export default function Header() {
     }),
   }
 
-  // Add this right after the useMediaQuery hook
-  useEffect(() => {
-    const handleCloseSheet = () => {
-      // Find and click the close button
-      const closeButton = document.querySelector("[data-radix-collection-item]")
-      if (closeButton && closeButton instanceof HTMLElement) {
-        closeButton.click()
-      }
-    }
-
-    document.addEventListener("close-sheet", handleCloseSheet)
-    return () => {
-      document.removeEventListener("close-sheet", handleCloseSheet)
-    }
-  }, [])
+  // Add state to control the sheet
+  const [isSheetOpen, setIsSheetOpen] = useState(false)
 
   return (
     <>
@@ -183,7 +170,7 @@ export default function Header() {
               <Link href="/contact">Book Consult</Link>
             </Button>
 
-            <Sheet>
+            <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
               <SheetTrigger asChild>
                 <Button variant="outline" size="icon" className="md:hidden">
                   <Menu className="h-5 w-5" />
@@ -201,24 +188,13 @@ export default function Header() {
                       className={`text-lg font-medium transition-colors hover:text-primary ${
                         pathname === item.href ? "text-primary" : "text-muted-foreground"
                       }`}
-                      onClick={() => {
-                        // Close the sheet when a navigation item is clicked
-                        const closeEvent = new CustomEvent("close-sheet")
-                        document.dispatchEvent(closeEvent)
-                      }}
+                      onClick={() => setIsSheetOpen(false)}
                     >
                       {item.name}
                     </Link>
                   ))}
                   <Button asChild className="mt-4 w-full">
-                    <Link
-                      href="/contact"
-                      onClick={() => {
-                        // Close the sheet when the button is clicked
-                        const closeEvent = new CustomEvent("close-sheet")
-                        document.dispatchEvent(closeEvent)
-                      }}
-                    >
+                    <Link href="/contact" onClick={() => setIsSheetOpen(false)}>
                       Book Consult
                     </Link>
                   </Button>
