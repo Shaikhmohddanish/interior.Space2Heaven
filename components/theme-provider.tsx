@@ -30,13 +30,18 @@ export function ThemeProvider({
   storageKey = "space2haven-ui-theme",
   ...props
 }: ThemeProviderProps) {
-  const [theme, setTheme] = useState<Theme>(() => {
-    // Check if a theme is stored in localStorage
+  const [theme, setTheme] = useState<Theme>(defaultTheme)
+
+  // Use useEffect to safely access localStorage only in the browser
+  useEffect(() => {
+    // Check if we're in the browser environment
     const storedTheme = localStorage.getItem(storageKey) as Theme | null
 
-    // Return stored theme if it exists, otherwise use defaultTheme
-    return storedTheme || defaultTheme
-  })
+    // If a theme is stored, use it; otherwise, use the default
+    if (storedTheme) {
+      setTheme(storedTheme)
+    }
+  }, [storageKey, defaultTheme])
 
   useEffect(() => {
     const root = window.document.documentElement
