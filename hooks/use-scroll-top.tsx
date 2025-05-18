@@ -1,9 +1,10 @@
 "use client"
 
-import { useEffect } from "react"
+import { useEffect, Suspense } from "react"
 import { usePathname, useSearchParams } from "next/navigation"
 
-export function useScrollTop() {
+// Component that uses useSearchParams and needs to be wrapped in Suspense
+function ScrollToTopInner() {
   const pathname = usePathname()
   const searchParams = useSearchParams()
 
@@ -13,9 +14,27 @@ export function useScrollTop() {
       behavior: "smooth",
     })
   }, [pathname, searchParams])
+
+  return null
 }
 
+// Hook that doesn't directly use useSearchParams
+export function useScrollTop() {
+  const pathname = usePathname()
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }, [pathname])
+}
+
+// Component that wraps the inner component in Suspense
 export default function ScrollToTop() {
-  useScrollTop()
-  return null
+  return (
+    <Suspense fallback={null}>
+      <ScrollToTopInner />
+    </Suspense>
+  )
 }

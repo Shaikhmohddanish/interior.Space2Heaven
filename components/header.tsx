@@ -5,7 +5,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Menu, Phone, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Sheet, SheetContent, SheetTrigger, SheetTitle } from "@/components/ui/sheet"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { motion } from "framer-motion"
 import { useMediaQuery } from "@/hooks/use-media-query"
@@ -174,8 +174,10 @@ export default function Header() {
                   <span className="sr-only">Toggle menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="right">
-                <div className="mt-6 flex flex-col gap-6">
+              <SheetContent title="Navigation Menu">
+                {/* Visible title for better UX */}
+                <SheetTitle className="mb-6">Menu</SheetTitle>
+                <div className="flex flex-col gap-6">
                   {navigation.map((item) => (
                     <Link
                       key={item.name}

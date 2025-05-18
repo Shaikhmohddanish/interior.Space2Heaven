@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { ArrowRight, X, Filter } from "lucide-react"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Dialog, DialogContent, DialogClose } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogClose, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { motion, AnimatePresence } from "framer-motion"
@@ -19,6 +19,7 @@ export default function Portfolio() {
   const [activeCategory, setActiveCategory] = useState("All")
   const [activeStyle, setActiveStyle] = useState("All Styles")
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
+  const [selectedProject, setSelectedProject] = useState<any | null>(null)
   const [isLoaded, setIsLoaded] = useState<Record<string, boolean>>({})
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
@@ -71,17 +72,14 @@ export default function Portfolio() {
     },
   ]
 
-  const filteredProjects = projects.filter(
-    (project) =>
-      (activeCategory === "All" || project.category === activeCategory) &&
-      (activeStyle === "All Styles" || project.style === activeStyle),
-  )
+  const filteredProjects =
+    activeCategory === "All" ? projects : projects.filter((project) => project.category === activeCategory)
 
   const handleImageLoad = (image: string) => {
     setIsLoaded((prev) => ({ ...prev, [image]: true }))
   }
 
-  // Reset loaded state when filters change
+  // Reset loaded state when category changes
   useEffect(() => {
     setIsLoaded({})
   }, [activeCategory, activeStyle])
@@ -108,6 +106,11 @@ export default function Portfolio() {
       items.forEach((item) => observer.unobserve(item))
     }
   }, [filteredProjects])
+
+  const openProjectDialog = (project: any) => {
+    setSelectedProject(project)
+    setSelectedImage(project.image)
+  }
 
   return (
     <section className="container py-16 md:py-24">
@@ -204,7 +207,7 @@ export default function Portfolio() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5 }}
                 className="project-item group cursor-pointer overflow-hidden rounded-lg border border-border/40 bg-card shadow-sm transition-all duration-500 hover:shadow-md"
-                onClick={() => setSelectedImage(project.image)}
+                onClick={() => openProjectDialog(project)}
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
@@ -281,8 +284,10 @@ export default function Portfolio() {
           </Link>
         </div>
 
-        <Dialog open={!!selectedImage} onOpenChange={(open) => !open && setSelectedImage(null)}>
+        <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
           <DialogContent className="max-w-4xl border-none bg-background/95 p-0 backdrop-blur-sm sm:rounded-lg">
+            {/* Add DialogTitle for accessibility */}
+            <DialogTitle className="sr-only">{selectedProject?.title || "Project Details"}</DialogTitle>
             <DialogClose
               className="absolute right-4 top-4 z-10 rounded-full bg-background/80 p-2 text-foreground backdrop-blur-sm transition-colors hover:bg-background"
               data-no-scroll="true"
@@ -290,16 +295,24 @@ export default function Portfolio() {
               <X className="h-4 w-4" />
               <span className="sr-only">Close</span>
             </DialogClose>
-            {selectedImage && (
+            {selectedProject && (
               <div className="overflow-hidden sm:rounded-lg">
                 <Image
-                  src={selectedImage || "/placeholder.svg"}
-                  alt="Portfolio image"
+                  src={selectedProject.image || "/placeholder.svg"}
+                  alt={selectedProject.title}
                   width={1200}
                   height={800}
                   className="h-full w-full object-contain"
                   priority
                 />
+                <div className="p-6">
+                  <h3 className="text-xl font-medium">{selectedProject.title}</h3>
+                  <p className="mt-2 text-muted-foreground">{selectedProject.description}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <Badge>{selectedProject.category}</Badge>
+                    <Badge variant="outline">{selectedProject.style}</Badge>
+                  </div>
+                </div>
               </div>
             )}
           </DialogContent>
