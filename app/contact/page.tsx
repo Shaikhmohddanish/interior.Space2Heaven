@@ -164,41 +164,41 @@ export default function ContactPage() {
           <div className="space-y-6">
             <h2 className="text-2xl font-bold">Contact Information</h2>
             <div className="grid gap-4 sm:grid-cols-2">
-              <Card>
+              <Card className="shadow-lg border-primary/30 border-2">
                 <CardContent className="flex items-center gap-4 p-6">
-                  <MapPin className="h-6 w-6 text-primary" />
+                  <MapPin className="h-7 w-7 text-primary" />
                   <div>
-                    <h3 className="font-medium">Address</h3>
-                    <p className="text-sm text-muted-foreground">
+                    <h3 className="font-semibold text-lg">Address</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
                       4th Floor, Zenia Building,<br />Hiranandani Business Park, Thane
                     </p>
                   </div>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="shadow-lg border-primary/30 border-2">
                 <CardContent className="flex items-center gap-4 p-6">
-                  <Phone className="h-6 w-6 text-primary" />
+                  <Phone className="h-7 w-7 text-primary" />
                   <div>
-                    <h3 className="font-medium">Phone</h3>
-                    <p className="text-sm text-muted-foreground">+91 897 651 1551</p>
-                    <p className="text-sm text-muted-foreground">+91 828 698 4597</p>
+                    <h3 className="font-semibold text-lg">Phone</h3>
+                    <a href="tel:+918976511551" className="text-sm text-muted-foreground hover:text-primary block">+91 897 651 1551</a>
+                    <a href="tel:+918286984597" className="text-sm text-muted-foreground hover:text-primary block">+91 828 698 4597</a>
                   </div>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="shadow-lg border-primary/30 border-2">
                 <CardContent className="flex items-center gap-4 p-6">
-                  <Mail className="h-6 w-6 text-primary" />
+                  <Mail className="h-7 w-7 text-primary" />
                   <div>
-                    <h3 className="font-medium">Email</h3>
-                    <p className="text-sm text-muted-foreground">Hello@space2heaven.com</p>
+                    <h3 className="font-semibold text-lg">Email</h3>
+                    <a href="mailto:Hello@space2heaven.com" className="text-sm text-muted-foreground hover:text-primary">Hello@space2heaven.com</a>
                   </div>
                 </CardContent>
               </Card>
-              <Card>
+              <Card className="shadow-lg border-primary/30 border-2">
                 <CardContent className="flex items-center gap-4 p-6">
-                  <Clock className="h-6 w-6 text-primary" />
+                  <Clock className="h-7 w-7 text-primary" />
                   <div>
-                    <h3 className="font-medium">Hours</h3>
+                    <h3 className="font-semibold text-lg">Hours</h3>
                     <p className="text-sm text-muted-foreground">
                       Mon-Fri: 9AM - 6PM
                       <br />
@@ -209,21 +209,33 @@ export default function ContactPage() {
               </Card>
             </div>
 
-            <div className="overflow-hidden rounded-lg bg-muted">
-              {/* This would be a Google Map in a real implementation */}
-              <div className="aspect-video bg-muted p-4 text-center">
-                <p className="text-muted-foreground">Interactive Map Would Be Here</p>
-              </div>
+            <div className="overflow-hidden rounded-lg shadow-lg border-primary/30 border-2">
+              <iframe
+                title="Space2Heaven Location"
+                src="https://www.google.com/maps?q=4th+Floor,+Zenia+Building,+Hiranandani+Business+Park,+Thane&output=embed"
+                width="100%"
+                height="320"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full aspect-video"
+              ></iframe>
             </div>
 
-            <div className="rounded-lg bg-primary/10 p-6">
-              <h3 className="font-medium">Book a Consultation</h3>
+            <div className="rounded-lg bg-primary/10 p-6 shadow-md border border-primary/20">
+              <h3 className="font-semibold text-lg">Book a Consultation</h3>
               <p className="mt-2 text-sm text-muted-foreground">
-                Prefer to speak with a designer directly? Schedule a complimentary 30-minute consultation to discuss
-                your project needs.
+                Prefer to speak with a designer directly? Schedule a complimentary 30-minute consultation to discuss your project needs.
               </p>
-              <Button variant="outline" className="mt-4">
-                Schedule Now
+              <Button
+                asChild
+                variant="outline"
+                className="mt-4 hover:bg-primary/20 transition-colors"
+              >
+                <a href="mailto:Hello@space2heaven.com?subject=Consultation%20Request&body=Hi%2C%20I%20would%20like%20to%20book%20a%20consultation%20for%20my%20project." target="_blank" rel="noopener noreferrer">
+                  Schedule Now
+                </a>
               </Button>
             </div>
           </div>

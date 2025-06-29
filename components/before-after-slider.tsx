@@ -19,7 +19,7 @@ export default function BeforeAfterSlider() {
       title: "Living Room Transformation",
       description: "From outdated to contemporary elegance",
       before: "/before-1.jpg",
-      after: "/hero-1.jpg",
+      after: "/after-1.jpg",
     },
     {
       title: "Kitchen Renovation",
@@ -28,37 +28,57 @@ export default function BeforeAfterSlider() {
       after: "/after-2.jpg",
     },
     {
-      title: "Bathroom Remodel",
-      description: "From basic to spa-like luxury",
-      before: "/before-1.jpg",
-      after: "/portfolio-1.jpg",
+      title: "Bedroom Makeover",
+      description: "A cozy and modern retreat",
+      before: "/portfolio-2.jpg",
+      after: "/portfolio-3.jpg",
+    },
+    {
+      title: "Office Upgrade",
+      description: "Functional and inspiring workspace redesign",
+      before: "/portfolio-4.jpg",
+      after: "/portfolio-5.jpg",
     },
   ]
 
-  const handleMouseDown = () => {
+  // Drag logic for slider
+  const handleDrag = (clientX: number) => {
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect()
+      const x = Math.max(0, Math.min(clientX - rect.left, rect.width))
+      const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100))
+      setSliderPosition(percentage)
+    }
+  }
+
+  const handleMouseDown = (e: React.MouseEvent) => {
     setIsDragging(true)
+    handleDrag(e.clientX)
+  }
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isDragging) {
+      handleDrag(e.clientX)
+    }
   }
 
   const handleMouseUp = () => {
     setIsDragging(false)
   }
 
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging && containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect()
-      const x = Math.max(0, Math.min(e.clientX - rect.left, rect.width))
-      const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100))
-      setSliderPosition(percentage)
-    }
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsDragging(true)
+    handleDrag(e.touches[0].clientX)
   }
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect()
-      const x = Math.max(0, Math.min(e.touches[0].clientX - rect.left, rect.width))
-      const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100))
-      setSliderPosition(percentage)
+    if (isDragging) {
+      handleDrag(e.touches[0].clientX)
     }
+  }
+
+  const handleTouchEnd = () => {
+    setIsDragging(false)
   }
 
   const nextProject = () => {
@@ -70,11 +90,15 @@ export default function BeforeAfterSlider() {
   }
 
   useEffect(() => {
-    document.addEventListener("mouseup", handleMouseUp)
+    if (!isDragging) return
+    const onMouseUp = () => setIsDragging(false)
+    window.addEventListener("mouseup", onMouseUp)
+    window.addEventListener("mouseleave", onMouseUp)
     return () => {
-      document.removeEventListener("mouseup", handleMouseUp)
+      window.removeEventListener("mouseup", onMouseUp)
+      window.removeEventListener("mouseleave", onMouseUp)
     }
-  }, [])
+  }, [isDragging])
 
   return (
     <section className="container py-16 md:py-24">
@@ -118,12 +142,14 @@ export default function BeforeAfterSlider() {
           <div className="space-y-4">
             <div
               ref={containerRef}
-              className="relative aspect-[16/9] w-full cursor-ew-resize overflow-hidden rounded-lg touch-pan-x"
+              className="relative aspect-[16/9] w-full cursor-ew-resize overflow-hidden rounded-lg touch-pan-x select-none"
               onMouseDown={handleMouseDown}
               onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
+              onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
-              onTouchStart={() => setIsDragging(true)}
-              onTouchEnd={() => setIsDragging(false)}
+              onTouchEnd={handleTouchEnd}
             >
               {/* After image (full width) */}
               <div className="absolute inset-0">

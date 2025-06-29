@@ -144,14 +144,11 @@ export default function Footer() {
           <div className="flex flex-col items-center justify-between gap-4 text-center text-sm text-muted-foreground md:flex-row md:text-left">
             <p>&copy; {currentYear} Space2Haven. All rights reserved.</p>
             <div className="flex gap-4">
-              <Link href="#" className="hover:text-primary">
+              <Link href="https://space2haven.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
                 Privacy Policy
               </Link>
-              <Link href="#" className="hover:text-primary">
-                Terms of Service
-              </Link>
-              <Link href="#" className="hover:text-primary">
-                Sitemap
+              <Link href="https://space2haven.com/terms" target="_blank" rel="noopener noreferrer" className="hover:text-primary">
+                Terms &amp; Conditions
               </Link>
             </div>
           </div>
