@@ -206,8 +206,8 @@ export default function BannerSlider() {
         </Button>
       </div>
 
-      {/* Indicators */}
-      <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-2">
+      {/* Indicators (Hidden on Mobile) */}
+      <div className="absolute bottom-6 left-0 right-0 z-20 flex justify-center gap-2 hidden sm:flex">
         {banners.map((_, index) => (
           <button
             key={index}

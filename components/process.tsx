@@ -139,7 +139,7 @@ export default function Process() {
 
                   {/* Mobile layout */}
                   <div className="md:hidden flex items-start gap-4 pl-2 mb-8">
-                    <div className="flex items-center justify-center h-10 w-10 rounded-full bg-primary text-primary-foreground">
+                    <div className="flex items-center justify-center min-w-[2.5rem] min-h-[2.5rem] w-10 h-10 rounded-full bg-primary text-primary-foreground aspect-square">
                       <span className="text-sm font-bold">{step.number}</span>
                     </div>
                     <div className="space-y-2">

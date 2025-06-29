@@ -200,16 +200,16 @@ export default function BeforeAfterSlider() {
 
             {/* Project navigation dots */}
             <div className="flex justify-center gap-2">
-              {projects.map((_, index) => (
-                <button
-                  key={index}
-                  className={`h-2 w-2 rounded-full transition-all ${
-                    index === currentProject ? "bg-primary w-4" : "bg-muted"
-                  }`}
-                  onClick={() => setCurrentProject(index)}
-                  data-no-scroll="true"
-                />
-              ))}
+              <div className="hidden md:flex">
+                {projects.map((_, index) => (
+                  <button
+                    key={index}
+                    className={`h-2 w-2 rounded-full transition-all ${index === currentProject ? "bg-primary w-4" : "bg-muted"}`}
+                    onClick={() => setCurrentProject(index)}
+                    data-no-scroll="true"
+                  />
+                ))}
+              </div>
             </div>
           </div>
         </div>
