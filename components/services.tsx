@@ -19,6 +19,7 @@ export default function Services() {
         "Transform your home into a personalized sanctuary that reflects your unique style and meets your functional needs.",
       icon: Home,
       href: "/services",
+      image: "/portfolio-1.jpg",
     },
     {
       title: "Commercial Design",
@@ -26,6 +27,7 @@ export default function Services() {
         "Create inspiring workspaces that enhance productivity, reflect your brand identity, and impress your clients.",
       icon: Building2,
       href: "/services",
+      image: "/portfolio-2.jpg",
     },
     {
       title: "Hospitality Design",
@@ -33,6 +35,7 @@ export default function Services() {
         "Design memorable experiences for your guests with spaces that combine aesthetics, comfort, and functionality.",
       icon: Hotel,
       href: "/services",
+      image: "/portfolio-3.jpg",
     },
     {
       title: "Renovation Consulting",
@@ -40,18 +43,21 @@ export default function Services() {
         "Breathe new life into existing spaces with strategic renovations that maximize impact while respecting your budget.",
       icon: Hammer,
       href: "/services",
+      image: "/portfolio-4.jpg",
     },
     {
       title: "Custom Furniture Design",
       description: "Commission bespoke furniture pieces that perfectly fit your space and express your personal style.",
       icon: Sofa,
       href: "/services",
+      image: "/portfolio-5.jpg",
     },
     {
       title: "Virtual Design Services",
       description: "Access our expertise remotely with comprehensive virtual design packages tailored to your needs.",
       icon: Monitor,
       href: "/services",
+      image: "/portfolio-6.jpg",
     },
   ]
 
@@ -107,25 +113,37 @@ export default function Services() {
 
             return (
               <motion.div key={index} variants={itemVariants}>
-                <Card className="group h-full border-border/40 bg-background transition-all duration-300 hover:border-primary/20 hover:shadow-md dark:bg-background/50">
-                  <CardHeader>
-                    <div className="mb-2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20">
-                      <Icon className="h-6 w-6 text-primary" />
-                    </div>
-                    <CardTitle className="transition-colors duration-300 group-hover:text-primary">
-                      {service.title}
-                    </CardTitle>
-                    <CardDescription>{service.description}</CardDescription>
-                  </CardHeader>
-                  <CardFooter className="mt-auto pt-2">
-                    <Link
-                      href={service.href}
-                      className="group inline-flex items-center text-sm font-medium text-primary transition-colors hover:text-primary/80"
-                    >
-                      Learn More{" "}
-                      <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
-                    </Link>
-                  </CardFooter>
+                <Card className="group relative h-full overflow-hidden border-border/40 bg-background transition-all duration-300 hover:border-primary/20 hover:shadow-md dark:bg-background/50">
+                  {/* Background image */}
+                  <div className="absolute inset-0 z-0">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="h-full w-full object-cover object-center opacity-60 group-hover:opacity-70 transition-opacity duration-300"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-black/10" />
+                  </div>
+                  <div className="relative z-10 text-white">
+                    <CardHeader>
+                      <div className="mb-2 inline-flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 transition-colors duration-300 group-hover:bg-primary/20">
+                        <Icon className="h-6 w-6 text-primary" />
+                      </div>
+                      <CardTitle className="transition-colors duration-300 group-hover:text-primary text-white drop-shadow-md">
+                        {service.title}
+                      </CardTitle>
+                      <CardDescription className="text-white/90 drop-shadow">{service.description}</CardDescription>
+                    </CardHeader>
+                    <CardFooter className="mt-auto pt-2">
+                      <Link
+                        href={service.href}
+                        className="group inline-flex items-center text-sm font-medium text-white transition-colors hover:text-primary"
+                      >
+                        Learn More{" "}
+                        <ArrowRight className="ml-1 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                      </Link>
+                    </CardFooter>
+                  </div>
                 </Card>
               </motion.div>
             )

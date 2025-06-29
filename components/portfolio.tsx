@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, X, Filter } from "lucide-react"
+import { ArrowRight, X, Filter, ChevronLeft, ChevronRight } from "lucide-react"
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Dialog, DialogContent, DialogClose, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
@@ -18,8 +18,8 @@ export default function Portfolio() {
 
   const [activeCategory, setActiveCategory] = useState("All")
   const [activeStyle, setActiveStyle] = useState("All Styles")
-  const [selectedImage, setSelectedImage] = useState<string | null>(null)
   const [selectedProject, setSelectedProject] = useState<any | null>(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [isLoaded, setIsLoaded] = useState<Record<string, boolean>>({})
   const [isFilterOpen, setIsFilterOpen] = useState(false)
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
@@ -32,43 +32,49 @@ export default function Portfolio() {
       title: "Modern Minimalist Apartment",
       category: "Residential",
       style: "Minimalist",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/portfolio-1.jpg",
       description: "A sleek, minimalist design that maximizes space and light.",
+      images: ["/portfolio-1.jpg", "/hero-1.jpg", "/service-1.jpg"]
     },
     {
       title: "Tech Startup Headquarters",
       category: "Commercial",
       style: "Modern",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/portfolio-2.jpg",
       description: "A dynamic workspace fostering creativity and collaboration.",
+      images: ["/portfolio-2.jpg", "/hero-3.jpg", "/service-2.jpg"]
     },
     {
       title: "Boutique Hotel Lobby",
       category: "Hospitality",
       style: "Eclectic",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/portfolio-3.jpg",
       description: "An elegant hotel lobby creating a memorable first impression.",
+      images: ["/portfolio-3.jpg", "/service-3.jpg", "/portfolio-6.jpg"]
     },
     {
       title: "Urban Loft Renovation",
       category: "Residential",
       style: "Industrial",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/portfolio-4.jpg",
       description: "A contemporary living space honoring industrial character.",
+      images: ["/portfolio-4.jpg", "/portfolio-5.jpg", "/service-1.jpg"]
     },
     {
       title: "Luxury Retail Store",
       category: "Commercial",
       style: "Modern",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/portfolio-5.jpg",
       description: "A high-end retail environment showcasing premium products.",
+      images: ["/portfolio-5.jpg", "/service-4.jpg", "/service-2.jpg"]
     },
     {
       title: "Farm-to-Table Restaurant",
       category: "Hospitality",
       style: "Traditional",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/portfolio-6.jpg",
       description: "A warm, rustic design emphasizing natural materials.",
+      images: ["/portfolio-6.jpg", "/hero-2.jpg", "/service-5.jpg"]
     },
   ]
 
@@ -84,32 +90,19 @@ export default function Portfolio() {
     setIsLoaded({})
   }, [activeCategory, activeStyle])
 
-  // Intersection Observer for scroll animations
-  useEffect(() => {
-    if (!containerRef.current) return
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("animate-in")
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-
-    const items = containerRef.current.querySelectorAll(".project-item")
-    items.forEach((item) => observer.observe(item))
-
-    return () => {
-      items.forEach((item) => observer.unobserve(item))
-    }
-  }, [filteredProjects])
-
   const openProjectDialog = (project: any) => {
     setSelectedProject(project)
-    setSelectedImage(project.image)
+    setCurrentImageIndex(0)
+  }
+
+  const nextImage = () => {
+    if (!selectedProject) return
+    setCurrentImageIndex((prev) => (prev + 1) % selectedProject.images.length)
+  }
+
+  const prevImage = () => {
+    if (!selectedProject) return
+    setCurrentImageIndex((prev) => (prev - 1 + selectedProject.images.length) % selectedProject.images.length)
   }
 
   return (
@@ -211,7 +204,7 @@ export default function Portfolio() {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
               >
-                <div className="relative aspect-[4/3] overflow-hidden bg-muted/30">
+                <div className="relative aspect-[4/3] overflow-hidden">
                   <div
                     className={cn(
                       "absolute inset-0 flex items-center justify-center bg-muted/30 transition-opacity",
@@ -227,26 +220,12 @@ export default function Portfolio() {
                     height={600}
                     className={cn(
                       "h-full w-full object-cover transition-all duration-700",
-                      "group-hover:scale-105",
-                      isLoaded[project.image] ? "opacity-100" : "opacity-0",
+                      hoveredIndex === index ? "scale-105" : "scale-100",
+                      isLoaded[project.image] ? "opacity-100" : "opacity-0"
                     )}
                     onLoad={() => handleImageLoad(project.image)}
                     priority={index < 3}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                  <div className="absolute inset-0 flex items-end p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <div className="space-y-1 text-white">
-                      <p className="text-sm font-medium">{project.description}</p>
-                      <div className="flex flex-wrap gap-2">
-                        <Badge variant="outline" className="border-white/30 text-white">
-                          {project.category}
-                        </Badge>
-                        <Badge variant="outline" className="border-white/30 text-white">
-                          {project.style}
-                        </Badge>
-                      </div>
-                    </div>
-                  </div>
                 </div>
                 <div className="p-4">
                   <h3 className="font-medium group-hover:text-primary">{project.title}</h3>
@@ -256,19 +235,6 @@ export default function Portfolio() {
                     <span className="text-xs text-muted-foreground">{project.style}</span>
                   </div>
                 </div>
-
-                {hoveredIndex === index && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="rounded-full border-white bg-transparent text-white hover:bg-white/20"
-                      data-no-scroll="true"
-                    >
-                      View Project
-                    </Button>
-                  </div>
-                )}
               </motion.div>
             ))}
           </AnimatePresence>
@@ -286,7 +252,6 @@ export default function Portfolio() {
 
         <Dialog open={!!selectedProject} onOpenChange={(open) => !open && setSelectedProject(null)}>
           <DialogContent className="max-w-4xl border-none bg-background/95 p-0 backdrop-blur-sm sm:rounded-lg">
-            {/* Add DialogTitle for accessibility */}
             <DialogTitle className="sr-only">{selectedProject?.title || "Project Details"}</DialogTitle>
             <DialogClose
               className="absolute right-4 top-4 z-10 rounded-full bg-gray-800/70 p-2 text-white backdrop-blur-sm transition-colors hover:bg-gray-800/90"
@@ -296,22 +261,69 @@ export default function Portfolio() {
               <span className="sr-only">Close</span>
             </DialogClose>
             {selectedProject && (
-              <div className="overflow-hidden sm:rounded-lg">
-                <Image
-                  src={selectedProject.image || "/placeholder.svg"}
-                  alt={selectedProject.title}
-                  width={1200}
-                  height={800}
-                  className="h-full w-full object-contain"
-                  priority
-                />
+              <div className="relative">
+                <div className="relative aspect-video overflow-hidden bg-muted/30">
+                  <Image
+                    src={selectedProject.images[currentImageIndex] || "/placeholder.svg"}
+                    alt={selectedProject.title}
+                    width={1200}
+                    height={800}
+                    className="h-full w-full object-cover"
+                    priority
+                  />
+
+                  {selectedProject.images.length > 1 && (
+                    <>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="absolute left-4 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-background/80 text-foreground backdrop-blur-sm transition-colors hover:bg-background"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          prevImage()
+                        }}
+                      >
+                        <ChevronLeft className="h-5 w-5" />
+                        <span className="sr-only">Previous image</span>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="absolute right-4 top-1/2 h-10 w-10 -translate-y-1/2 rounded-full bg-background/80 text-foreground backdrop-blur-sm transition-colors hover:bg-background"
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          nextImage()
+                        }}
+                      >
+                        <ChevronRight className="h-5 w-5" />
+                        <span className="sr-only">Next image</span>
+                      </Button>
+                    </>
+                  )}
+                </div>
+
+                <div className="flex gap-2 overflow-x-auto p-4">
+                  {selectedProject.images.map((image: string, i: number) => (
+                    <div
+                      key={i}
+                      className={cn(
+                        "relative h-16 w-24 flex-shrink-0 cursor-pointer overflow-hidden rounded-md border-2 transition-all",
+                        i === currentImageIndex ? "border-primary" : "border-transparent",
+                      )}
+                      onClick={() => setCurrentImageIndex(i)}
+                    >
+                      <Image
+                        src={image || "/placeholder.svg"}
+                        alt={`${selectedProject.title} thumbnail ${i + 1}`}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                  ))}
+                </div>
+
                 <div className="p-6">
-                  <h3 className="text-xl font-medium">{selectedProject.title}</h3>
-                  <p className="mt-2 text-muted-foreground">{selectedProject.description}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    <Badge>{selectedProject.category}</Badge>
-                    <Badge variant="outline">{selectedProject.style}</Badge>
-                  </div>
+                  <p className="text-muted-foreground">{selectedProject.description}</p>
                 </div>
               </div>
             )}

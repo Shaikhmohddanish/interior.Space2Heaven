@@ -16,21 +16,21 @@ export default function Testimonials() {
         "Space2Haven transformed our outdated living room into a stunning, functional space that perfectly reflects our style. Their attention to detail and ability to understand our needs was exceptional.",
       author: "Sarah Johnson",
       role: "Homeowner",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/testimonial-1.jpg",
     },
     {
       quote:
         "Working with Space2Haven on our office redesign was a seamless experience. They created a workspace that not only looks amazing but has significantly improved our team's productivity and morale.",
       author: "Michael Chen",
       role: "CEO, TechStart Inc.",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/testimonial-3.jpg",
     },
     {
       quote:
         "The team at Space2Haven brought our boutique hotel vision to life with their innovative design approach. Our guests constantly compliment the unique, welcoming atmosphere they created.",
       author: "Emma Rodriguez",
       role: "Hotel Manager",
-      image: "/placeholder.svg?height=400&width=400",
+      image: "/testimonial-1.jpg",
     },
   ]
 

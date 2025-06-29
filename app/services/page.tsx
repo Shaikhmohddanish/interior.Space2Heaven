@@ -9,40 +9,40 @@ export default function ServicesPage() {
       title: "Residential Design",
       description:
         "Transform your home into a personalized sanctuary that reflects your unique style and meets your functional needs.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/service-1.jpg",
       features: ["Space Planning", "Furniture Selection", "Color Consultation", "Custom Solutions"],
     },
     {
       title: "Commercial Design",
       description:
         "Create inspiring workspaces that enhance productivity, reflect your brand identity, and impress your clients.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/service-2.jpg",
       features: ["Office Layouts", "Brand Integration", "Ergonomic Solutions", "Sustainable Design"],
     },
     {
       title: "Hospitality Design",
       description:
         "Design memorable experiences for your guests with spaces that combine aesthetics, comfort, and functionality.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/service-3.jpg",
       features: ["Hotel Interiors", "Restaurant Design", "Experience Creation", "Lighting Design"],
     },
     {
       title: "Renovation Consulting",
       description:
         "Breathe new life into existing spaces with strategic renovations that maximize impact while respecting your budget.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/service-4.jpg",
       features: ["Project Management", "Contractor Coordination", "Material Selection", "Budget Planning"],
     },
     {
       title: "Custom Furniture Design",
       description: "Commission bespoke furniture pieces that perfectly fit your space and express your personal style.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/service-5.jpg",
       features: ["Custom Cabinetry", "Statement Pieces", "Built-ins", "Material Sourcing"],
     },
     {
       title: "Virtual Design Services",
       description: "Access our expertise remotely with comprehensive virtual design packages tailored to your needs.",
-      image: "/placeholder.svg?height=600&width=800",
+      image: "/service-6.jpg",
       features: ["3D Renderings", "Digital Mood Boards", "Online Consultations", "Shopping Lists"],
     },
   ]

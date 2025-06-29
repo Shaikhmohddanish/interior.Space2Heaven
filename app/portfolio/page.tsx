@@ -34,9 +34,9 @@ export default function PortfolioPage() {
       location: "New York, NY",
       year: "2023",
       images: [
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
+        "/portfolio-1.jpg",
+        "/hero-1.jpg",
+        "/service-1.jpg",
       ],
     },
     {
@@ -47,9 +47,9 @@ export default function PortfolioPage() {
       location: "Malibu, CA",
       year: "2022",
       images: [
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
+        "/hero-2.jpg",
+        "/portfolio-4.jpg",
+        "/service-5.jpg",
       ],
     },
     {
@@ -60,9 +60,9 @@ export default function PortfolioPage() {
       location: "San Francisco, CA",
       year: "2023",
       images: [
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
+        "/portfolio-2.jpg",
+        "/hero-3.jpg",
+        "/service-2.jpg",
       ],
     },
     {
@@ -73,9 +73,9 @@ export default function PortfolioPage() {
       location: "Chicago, IL",
       year: "2022",
       images: [
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
+        "/portfolio-3.jpg",
+        "/service-3.jpg",
+        "/portfolio-6.jpg",
       ],
     },
     {

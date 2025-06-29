@@ -28,7 +28,7 @@ export default function AboutPage() {
           </div>
           <div className="overflow-hidden rounded-lg">
             <Image
-              src="/placeholder.svg?height=600&width=800"
+              src="/about-hero.jpg"
               alt="Space2Haven studio"
               width={800}
               height={600}
@@ -40,7 +40,7 @@ export default function AboutPage() {
         <div className="grid gap-8 md:grid-cols-2 md:gap-12">
           <div className="order-2 overflow-hidden rounded-lg md:order-1">
             <Image
-              src="/placeholder.svg?height=600&width=800"
+              src="/portfolio-2.jpg"
               alt="Our design process"
               width={800}
               height={600}
@@ -67,17 +67,17 @@ export default function AboutPage() {
               {
                 name: "Alexandra Reynolds",
                 role: "Principal Designer & Founder",
-                image: "/placeholder.svg?height=400&width=400",
+                image: "/testimonial-1.jpg",
               },
               {
                 name: "Marcus Chen",
                 role: "Senior Interior Designer",
-                image: "/placeholder.svg?height=400&width=400",
+                image: "/testimonial-3.jpg",
               },
               {
                 name: "Sophia Williams",
                 role: "Project Manager",
-                image: "/placeholder.svg?height=400&width=400",
+                image: "/testimonial-1.jpg",
               },
             ].map((member, index) => (
               <div key={index} className="flex flex-col items-center space-y-3 text-center">

@@ -18,20 +18,20 @@ export default function BeforeAfterSlider() {
     {
       title: "Living Room Transformation",
       description: "From outdated to contemporary elegance",
-      before: "/placeholder.svg?height=600&width=800",
-      after: "/placeholder.svg?height=600&width=800",
+      before: "/before-1.jpg",
+      after: "/hero-1.jpg",
     },
     {
       title: "Kitchen Renovation",
       description: "A complete modernization with improved functionality",
-      before: "/placeholder.svg?height=600&width=800",
-      after: "/placeholder.svg?height=600&width=800",
+      before: "/before-2.jpg",
+      after: "/after-2.jpg",
     },
     {
       title: "Bathroom Remodel",
       description: "From basic to spa-like luxury",
-      before: "/placeholder.svg?height=600&width=800",
-      after: "/placeholder.svg?height=600&width=800",
+      before: "/before-1.jpg",
+      after: "/portfolio-1.jpg",
     },
   ]
 

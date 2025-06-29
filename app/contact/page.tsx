@@ -170,9 +170,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-medium">Address</h3>
                     <p className="text-sm text-muted-foreground">
-                      123 Design Street, Suite 100
-                      <br />
-                      New York, NY 10001
+                      4th Floor, Zenia Building,<br />Hiranandani Business Park, Thane
                     </p>
                   </div>
                 </CardContent>
@@ -182,7 +180,8 @@ export default function ContactPage() {
                   <Phone className="h-6 w-6 text-primary" />
                   <div>
                     <h3 className="font-medium">Phone</h3>
-                    <p className="text-sm text-muted-foreground">(212) 555-1234</p>
+                    <p className="text-sm text-muted-foreground">+91 897 651 1551</p>
+                    <p className="text-sm text-muted-foreground">+91 828 698 4597</p>
                   </div>
                 </CardContent>
               </Card>
@@ -191,7 +190,7 @@ export default function ContactPage() {
                   <Mail className="h-6 w-6 text-primary" />
                   <div>
                     <h3 className="font-medium">Email</h3>
-                    <p className="text-sm text-muted-foreground">info@space2haven.com</p>
+                    <p className="text-sm text-muted-foreground">Hello@space2heaven.com</p>
                   </div>
                 </CardContent>
               </Card>

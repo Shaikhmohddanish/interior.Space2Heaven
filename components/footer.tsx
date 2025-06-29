@@ -91,11 +91,6 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="text-muted-foreground hover:text-primary">
-                  Blog
-                </Link>
-              </li>
-              <li>
                 <Link href="/contact" className="text-muted-foreground hover:text-primary">
                   Contact
                 </Link>
@@ -109,21 +104,25 @@ export default function Footer() {
               <li className="flex items-start gap-3 text-muted-foreground">
                 <MapPin className="mt-0.5 h-5 w-5 flex-shrink-0 text-primary" />
                 <span>
-                  123 Design Street, Suite 100
-                  <br />
-                  New York, NY 10001
+                  4th Floor, Zenia Building,<br />Hiranandani Business Park, Thane
                 </span>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Phone className="h-5 w-5 flex-shrink-0 text-primary" />
-                <a href="tel:+12125551234" className="hover:text-primary">
-                  +1 (212) 555-1234
+                <a href="tel:+918976511551" className="hover:text-primary">
+                  +91 897 651 1551
+                </a>
+              </li>
+              <li className="flex items-center gap-3 text-muted-foreground">
+                <Phone className="h-5 w-5 flex-shrink-0 text-primary" />
+                <a href="tel:+918286984597" className="hover:text-primary">
+                  +91 828 698 4597
                 </a>
               </li>
               <li className="flex items-center gap-3 text-muted-foreground">
                 <Mail className="h-5 w-5 flex-shrink-0 text-primary" />
-                <a href="mailto:info@space2haven.com" className="hover:text-primary">
-                  info@space2haven.com
+                <a href="mailto:Hello@space2heaven.com" className="hover:text-primary">
+                  Hello@space2heaven.com
                 </a>
               </li>
             </ul>
@@ -162,7 +161,7 @@ export default function Footer() {
       {/* WhatsApp Contact Button */}
       <div className="fixed bottom-6 right-6 z-50">
         <a
-          href="https://wa.me/12125551234"
+          href="https://wa.me/918976511551?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20interior%20design%20services."
           target="_blank"
           rel="noopener noreferrer"
           className="flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-transform hover:scale-110"

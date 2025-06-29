@@ -20,7 +20,6 @@ export default function Header() {
     { name: "About Us", href: "/about" },
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "/portfolio" },
-    { name: "Blog", href: "/blog" },
     { name: "Contact Us", href: "/contact" },
   ]
 
@@ -59,11 +58,15 @@ export default function Header() {
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Mail className="h-4 w-4" />
-              <a href="mailto:info@space2haven.com">info@space2haven.com</a>
+              <a href="mailto:Hello@space2heaven.com">Hello@space2heaven.com</a>
             </div>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <Phone className="h-4 w-4" />
-              <a href="tel:+12125551234">+1 (212) 555-1234</a>
+              <a href="tel:+918976511551">+91 897 651 1551</a>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <Phone className="h-4 w-4" />
+              <a href="tel:+918286984597">+91 828 698 4597</a>
             </div>
           </div>
           <div className="flex items-center gap-4">
