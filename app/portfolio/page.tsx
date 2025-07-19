@@ -86,9 +86,9 @@ export default function PortfolioPage() {
       location: "Boston, MA",
       year: "2021",
       images: [
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
+        "/modern-kitchen.jpg",
+        "/luxury-living.jpg",
+        "/modern-office.jpg",
       ],
     },
     {
@@ -99,9 +99,9 @@ export default function PortfolioPage() {
       location: "Miami, FL",
       year: "2023",
       images: [
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
+        "/modern-bathroom.jpg",
+        "/bedroom-design.jpg",
+        "/portfolio-6.jpg",
       ],
     },
     {
@@ -112,9 +112,9 @@ export default function PortfolioPage() {
       location: "Portland, OR",
       year: "2022",
       images: [
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
+        "/restaurant-design.jpg",
+        "/service-2.jpg",
+        "/service-3.jpg",
       ],
     },
     {
@@ -125,9 +125,9 @@ export default function PortfolioPage() {
       location: "Austin, TX",
       year: "2021",
       images: [
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
-        "/placeholder.svg?height=600&width=800",
+        "/luxury-living.jpg",
+        "/modern-kitchen.jpg",
+        "/bedroom-design.jpg",
       ],
     },
   ]
@@ -197,7 +197,7 @@ export default function PortfolioPage() {
                       <div className="h-8 w-8 animate-pulse rounded-full bg-muted" />
                     </div>
                     <Image
-                      src={project.images[0] || "/placeholder.svg"}
+                      src={project.images[0] || "/modern-kitchen.jpg"}
                       alt={project.title}
                       width={800}
                       height={600}
@@ -249,7 +249,7 @@ export default function PortfolioPage() {
                 <div className="relative">
                   <div className="relative aspect-video overflow-hidden bg-muted/30">
                     <Image
-                      src={selectedProject.images[currentImageIndex] || "/placeholder.svg"}
+                      src={selectedProject.images[currentImageIndex] || "/modern-kitchen.jpg"}
                       alt={selectedProject.title}
                       width={1200}
                       height={800}
@@ -298,7 +298,7 @@ export default function PortfolioPage() {
                         onClick={() => setCurrentImageIndex(i)}
                       >
                         <Image
-                          src={image || "/placeholder.svg"}
+                          src={image || "/modern-kitchen.jpg"}
                           alt={`${selectedProject.title} thumbnail ${i + 1}`}
                           fill
                           className="object-cover"

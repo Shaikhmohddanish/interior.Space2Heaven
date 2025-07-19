@@ -214,7 +214,7 @@ export default function Portfolio() {
                     <div className="h-8 w-8 animate-pulse rounded-full bg-muted" />
                   </div>
                   <Image
-                    src={project.image || "/placeholder.svg"}
+                    src={project.image || "/modern-kitchen.jpg"}
                     alt={project.title}
                     width={800}
                     height={600}
@@ -264,7 +264,7 @@ export default function Portfolio() {
               <div className="relative">
                 <div className="relative aspect-video overflow-hidden bg-muted/30">
                   <Image
-                    src={selectedProject.images[currentImageIndex] || "/placeholder.svg"}
+                    src={selectedProject.images[currentImageIndex] || "/modern-kitchen.jpg"}
                     alt={selectedProject.title}
                     width={1200}
                     height={800}
@@ -313,7 +313,7 @@ export default function Portfolio() {
                       onClick={() => setCurrentImageIndex(i)}
                     >
                       <Image
-                        src={image || "/placeholder.svg"}
+                        src={image || "/modern-kitchen.jpg"}
                         alt={`${selectedProject.title} thumbnail ${i + 1}`}
                         fill
                         className="object-cover"

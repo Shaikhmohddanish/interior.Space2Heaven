@@ -117,7 +117,7 @@ export default function BannerSlider() {
             {/* Background Image */}
             <div className="absolute inset-0">
               <Image
-                src={banner.image || "/placeholder.svg"}
+                src={banner.image || "/hero-1.jpg"}
                 alt={banner.title}
                 fill
                 priority

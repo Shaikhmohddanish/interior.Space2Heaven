@@ -125,7 +125,7 @@ export default function Testimonials() {
                       <div className="flex-shrink-0 mb-2 md:mb-0">
                         <div className="relative h-16 w-16 xs:h-20 xs:w-20 overflow-hidden rounded-full border-2 border-primary/10 md:h-24 md:w-24 mx-auto md:mx-0">
                           <Image
-                            src={testimonial.image || "/placeholder.svg"}
+                            src={testimonial.image || "/testimonial-1.jpg"}
                             alt={testimonial.author}
                             fill
                             className="object-cover"

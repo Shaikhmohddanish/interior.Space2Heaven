@@ -22,18 +22,6 @@ export default function BeforeAfterSlider() {
       after: "/after-1.jpg",
     },
     {
-      title: "Kitchen Renovation",
-      description: "A complete modernization with improved functionality",
-      before: "/before-2.jpg",
-      after: "/after-2.jpg",
-    },
-    {
-      title: "Bedroom Makeover",
-      description: "A cozy and modern retreat",
-      before: "/portfolio-2.jpg",
-      after: "/portfolio-3.jpg",
-    },
-    {
       title: "Office Upgrade",
       description: "Functional and inspiring workspace redesign",
       before: "/portfolio-4.jpg",
@@ -154,7 +142,7 @@ export default function BeforeAfterSlider() {
               {/* After image (full width) */}
               <div className="absolute inset-0">
                 <Image
-                  src={projects[currentProject].after || "/placeholder.svg"}
+                  src={projects[currentProject].after || "/after-1.jpg"}
                   alt="After"
                   fill
                   className="object-cover"
@@ -164,7 +152,7 @@ export default function BeforeAfterSlider() {
               {/* Before image (clipped) */}
               <div className="absolute inset-0 overflow-hidden" style={{ width: `${sliderPosition}%` }}>
                 <Image
-                  src={projects[currentProject].before || "/placeholder.svg"}
+                  src={projects[currentProject].before || "/before-1.jpg"}
                   alt="Before"
                   fill
                   className="object-cover"

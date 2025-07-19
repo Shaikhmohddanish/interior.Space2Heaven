@@ -83,7 +83,7 @@ export default function AboutPage() {
               <div key={index} className="flex flex-col items-center space-y-3 text-center">
                 <div className="overflow-hidden rounded-full">
                   <Image
-                    src={member.image || "/placeholder.svg"}
+                    src={member.image || "/designer.jpg"}
                     alt={member.name}
                     width={150}
                     height={150}

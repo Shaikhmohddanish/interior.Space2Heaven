@@ -62,7 +62,7 @@ export default function ServicesPage() {
             <Card key={index} className="flex flex-col overflow-hidden">
               <div className="aspect-video overflow-hidden">
                 <Image
-                  src={service.image || "/placeholder.svg"}
+                  src={service.image || "/service-1.jpg"}
                   alt={service.title}
                   width={800}
                   height={600}
