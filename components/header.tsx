@@ -17,7 +17,7 @@ export default function Header() {
 
   const navigation = [
     { name: "Home", href: "/" },
-    { name: "About Us", href: "/about" },
+    { name: "About Us", href: "https://space2haven.com/about" },
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "/portfolio" },
     { name: "Contact Us", href: "/contact" },
@@ -141,7 +141,7 @@ export default function Header() {
       >
         <div className="container flex h-16 items-center justify-between lg:h-20">
           <div className="flex items-center gap-6">
-            <Link href="/" className="flex items-center space-x-2">
+            <a href="https://space2haven.com" className="flex items-center space-x-2">
               <motion.span
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -150,7 +150,7 @@ export default function Header() {
               >
                 Space2Haven
               </motion.span>
-            </Link>
+            </a>
           </div>
 
           <nav className="hidden items-center gap-1 md:flex lg:gap-2">
